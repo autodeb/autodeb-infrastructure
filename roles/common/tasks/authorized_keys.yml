@@ -1,0 +1,7 @@
+---
+
+- name: install authorized keys
+  authorized_key:
+    user: admin
+    state: present
+    key: https://salsa.debian.org/aviau.keys

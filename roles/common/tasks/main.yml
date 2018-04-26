@@ -1,6 +1,8 @@
 ---
 
-- name: install vim
+- name: update all packages to the latest version
   apt:
-    name: vim
-    state: present
+    upgrade: dist
+
+- include: common_packages.yml
+- include: authorized_keys.yml
