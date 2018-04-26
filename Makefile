@@ -8,6 +8,14 @@ ANSIBLE_PLAYBOOK_BIN:=.ansible-env/bin/ansible-playbook
 provision: .ansible
 	$(ANSIBLE_PLAYBOOK_BIN) -i inventory_production.yml playbook_site.yml
 
+.PHONY: provision-master
+provision-master: .ansible
+	$(ANSIBLE_PLAYBOOK_BIN) -i inventory_production.yml playbook_master.yml
+
+.PHONY: provision-workers
+provision-workers: .ansible
+	$(ANSIBLE_PLAYBOOK_BIN) -i inventory_production.yml playbook_workers.yml
+
 .PHONY: .ansible
 .ansible: .ansible-env
 
