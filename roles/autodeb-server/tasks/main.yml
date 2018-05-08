@@ -1,0 +1,5 @@
+---
+
+- name: install the autodeb-server deb
+  apt:
+    deb: https://autodeb-team.pages.debian.net/autodeb-packaging/autodeb-server_latest.deb

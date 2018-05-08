@@ -1,0 +1,5 @@
+---
+
+- name: install the autodeb-worker deb
+  apt:
+    deb: https://autodeb-team.pages.debian.net/autodeb-packaging/autodeb-worker_latest.deb
