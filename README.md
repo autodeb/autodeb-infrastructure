@@ -2,7 +2,7 @@
 
 This repository contains Ansible scripts for provisionning the infrastructure for auto.debian.net.
 
-Everything is operated from the Makefile using one of the following targets:
+Everything is operated from the Makefile using the following targets:
  - ``provision``: provisions both the master server and the workers
  - ``provision-master``: provisions only the master
  - ``provision-workers``: provisions only the workers
