@@ -3,7 +3,7 @@
 This repository contains Ansible scripts for provisionning the infrastructure for auto.debian.net.
 
 Currently, the infrastructure is accessible at:
- - http://autodeb.alexandreviau.net/
+ - http://auto.debian.net/
 
 Everything is operated from the Makefile using the following targets:
  - ``provision``: provisions both the master server and the workers
