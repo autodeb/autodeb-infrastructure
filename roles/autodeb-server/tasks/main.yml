@@ -1,5 +1,23 @@
 ---
 
+- name: install nginx
+  apt:
+    name: nginx
+    state: latest
+
+- name: enable and start the nginx service
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: configure nginx
+  template:
+    src: nginx-default
+    dest: /etc/nginx/sites-enabled/default
+  notify:
+    - restart nginx
+
 - name: install the autodeb-server deb
   apt:
     deb: https://autodeb-team.pages.debian.net/autodeb-packaging/autodeb-server_latest.deb

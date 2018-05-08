@@ -1,0 +1,15 @@
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        # package uploads can be large
+        client_max_body_size 1000M;
+
+        server_name _;
+
+        # forward requests to autodeb-serv
+        location / {
+                proxy_pass http://localhost:8080;
+        }
+
+}
