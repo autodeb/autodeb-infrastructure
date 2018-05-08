@@ -3,3 +3,9 @@
 - name: install the autodeb-server deb
   apt:
     deb: https://autodeb-team.pages.debian.net/autodeb-packaging/autodeb-server_latest.deb
+
+- name: enable and start the autodeb-server service
+  service:
+    name: autodeb-server
+    state: started
+    enabled: yes
