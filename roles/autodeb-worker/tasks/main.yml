@@ -3,6 +3,8 @@
 - name: install the autodeb-worker deb
   apt:
     deb: https://autodeb-team.pages.debian.net/autodeb-packaging/autodeb-worker_latest.deb
+  notify:
+    - restart autodeb-worker
 
 - name: enable and start the autodeb-worker service
   service:

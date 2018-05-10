@@ -1,0 +1,6 @@
+---
+
+- name: restart autodeb-worker
+  service:
+    name: autodeb-worker
+    state: restarted

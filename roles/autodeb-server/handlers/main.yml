@@ -4,3 +4,8 @@
   service:
     name: nginx
     state: restarted
+
+- name: restart autodeb-server
+  service:
+    name: autodeb-server
+    state: restarted
