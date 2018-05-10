@@ -1,0 +1,17 @@
+---
+
+- hosts: all
+
+  tasks:
+
+    - name: purge autodeb-server
+      apt:
+        name: autodeb-server
+        state: absent
+        purge: yes
+
+    - name: purge autodeb-worker
+      apt:
+        name: autodeb-worker
+        state: absent
+        purge: yes

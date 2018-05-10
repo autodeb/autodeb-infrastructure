@@ -9,6 +9,7 @@ Everything is operated from the Makefile using the following targets:
  - ``provision``: provisions both the master server and the workers
  - ``provision-master``: provisions only the master
  - ``provision-workers``: provisions only the workers
+ - ``purge``: purge autodeb-worker and autodeb-server from all hosts
 
 This repository contains nothing that is private but it cannot be used without being authorized on the machines.
 If you want to be authorized on the machines, you should open a pull request to add yourself to ``roles/common/tasks/authorized_keys.yml``.
