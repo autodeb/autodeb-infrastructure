@@ -20,6 +20,14 @@ provision-workers: .ansible
 purge: .ansible
 	$(ANSIBLE_PLAYBOOK_BIN) -i inventory_production.yml playbook_purge.yml
 
+.PHONY: purge-workers
+purge-workers: .ansible
+	$(ANSIBLE_PLAYBOOK_BIN) -i inventory_production.yml playbook_purge_workers.yml
+
+.PHONY: purge-master
+purge-master: .ansible
+	$(ANSIBLE_PLAYBOOK_BIN) -i inventory_production.yml playbook_purge_master.yml
+
 .PHONY: .ansible
 .ansible: .ansible-env
 

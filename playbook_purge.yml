@@ -1,23 +1,4 @@
 ---
 
-- hosts: all
-
-  tasks:
-
-    - name: purge autodeb-server
-      apt:
-        name: autodeb-server
-        state: absent
-        purge: yes
-
-    - name: purge autodeb-worker
-      apt:
-        name: autodeb-worker
-        state: absent
-        purge: yes
-
-    - name: purge chroots
-      command: "{{ item }}"
-      with_items:
-        - bash -c "rm -rf /srv/chroot/*"
-        - bash -c "rm -rf /etc/schroot/chroot.d/*"
+- import_playbook: playbook_purge_master.yml
+- import_playbook: playbook_purge_workers.yml
