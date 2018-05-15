@@ -27,5 +27,9 @@
 # sbuild >= 0.74 would support
 #    --command-prefix=eatmydata
 - name: setup unstable schroot
-  command: sbuild-createchroot --include=eatmydata,ccache,gnupg unstable /srv/chroot/unstable-amd64-sbuild http://deb.debian.org/debian
+  command: sbuild-createchroot \
+               --include=eatmydata,ccache,gnupg unstable \
+               --alias=UNRELEASED \
+               /srv/chroot/unstable-amd64-sbuild \
+               http://deb.debian.org/debian
   when: unstable_amd64_sbuild.stat.exists == False
