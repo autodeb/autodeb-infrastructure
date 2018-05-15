@@ -1,3 +1,4 @@
+# {{ ansible_managed }}
 server {
         listen 80 default_server;
         listen [::]:80 default_server;
@@ -9,7 +10,7 @@ server {
 
         # forward requests to autodeb-serv
         location / {
-                proxy_pass http://localhost:8080;
+                proxy_pass http://localhost:8071;
         }
 
 }
