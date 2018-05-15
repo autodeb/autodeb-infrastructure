@@ -11,3 +11,21 @@
     name: autodeb-worker
     state: started
     enabled: yes
+
+- name: install autodeb-worker.conf
+  template:
+    src: autodeb-worker.conf
+    dest: /etc/autodeb-worker.conf
+  notify:
+    - restart autodeb-worker
+
+- name: check if /srv/chroot/unstable-amd64-sbuild is present
+  stat:
+    path: /srv/chroot/unstable-amd64-sbuild
+  register: unstable_amd64_sbuild
+
+# sbuild >= 0.74 would support
+#    --command-prefix=eatmydata
+- name: setup unstable schroot
+  command: sbuild-createchroot --include=eatmydata,ccache,gnupg unstable /srv/chroot/unstable-amd64-sbuild http://deb.debian.org/debian
+  when: unstable_amd64_sbuild.stat.exists == False
