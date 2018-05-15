@@ -15,3 +15,9 @@
         name: autodeb-worker
         state: absent
         purge: yes
+
+    - name: purge chroots
+      command: "{{ item }}"
+      with_items:
+        - bash -c "rm -rf /srv/chroot/*"
+        - bash -c "rm -rf /etc/schroot/chroot.d/*"
