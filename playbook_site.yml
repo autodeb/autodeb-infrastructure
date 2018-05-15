@@ -1,4 +1,0 @@
----
-
-- import_playbook: playbook_master.yml
-- import_playbook: playbook_workers.yml

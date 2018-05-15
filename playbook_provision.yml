@@ -1,0 +1,4 @@
+---
+
+- import_playbook: playbook_provision_master.yml
+- import_playbook: playbook_provision_workers.yml
