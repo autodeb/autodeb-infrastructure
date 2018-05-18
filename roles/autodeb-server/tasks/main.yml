@@ -23,6 +23,13 @@
   notify:
     - restart autodeb-server
 
+- name: configure autodeb-server
+  template:
+    src: autodeb-server.conf
+    dest: /etc/autodeb-server.conf
+  notify:
+    - restart autodeb-server
+
 - name: enable and start the autodeb-server service
   service:
     name: autodeb-server
