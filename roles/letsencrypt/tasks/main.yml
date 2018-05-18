@@ -1,0 +1,31 @@
+---
+
+- name: install nginx
+  apt:
+    name: nginx
+    state: latest
+
+- name: configure nginx
+  template:
+    src: nginx-default
+    dest: /etc/nginx/sites-enabled/default
+
+- name: enable and restart the nginx service
+  service:
+    name: nginx
+    enabled: yes
+    state: restarted
+
+- name: install certbot
+  apt:
+    name: python-certbot-nginx
+    default_release: stretch-backports
+
+- name: run certbot
+  command: certbot certonly \
+               -d {{ http_server_name }} \
+               --authenticator webroot
+               --webroot-path=/var/www/html \
+               --non-interactive \
+               --agree-tos \
+               --email aviau@debian.org

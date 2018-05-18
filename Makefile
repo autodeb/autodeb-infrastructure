@@ -2,7 +2,7 @@
 .default: provision
 
 export ANSIBLE_NOCOWS=1
-ANSIBLE_PLAYBOOK_BIN:=.ansible-env/bin/ansible-playbook
+ANSIBLE_PLAYBOOK_BIN:=.ansible-env/bin/ansible-playbook --vault-id vault-password
 
 .PHONY: provision
 provision: .ansible

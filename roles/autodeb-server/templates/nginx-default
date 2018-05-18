@@ -1,16 +1,27 @@
 # {{ ansible_managed }}
+
 server {
-        listen 80 default_server;
-        listen [::]:80 default_server;
+    listen      80;
+    listen [::]:80;
+    server_name {{ http_server_name }};
+    return 301 https://$server_name$request_uri;
+}
 
-        # package uploads can be large
-        client_max_body_size 1000M;
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name {{ http_server_name }}:
 
-        server_name _;
+    # ssl config
+    sl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_certificate /etc/letsencrypt/live/{{ http_server_name }}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/{{ http_server_name }}/privkey.pem;
 
-        # forward requests to autodeb-serv
-        location / {
-                proxy_pass http://localhost:8071;
-        }
+    # package uploads can be large
+    client_max_body_size 1000M;
 
+    # forward requests to autodeb-serv
+    location / {
+        proxy_pass http://localhost:8071;
+    }
 }

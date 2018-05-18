@@ -5,10 +5,9 @@
     name: nginx
     state: latest
 
-- name: enable and start the nginx service
+- name: enable the nginx service
   service:
     name: nginx
-    state: started
     enabled: yes
 
 - name: configure nginx

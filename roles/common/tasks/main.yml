@@ -1,5 +1,10 @@
 ---
 
+- name: install debian backports
+  apt_repository:
+    repo: deb http://ftp.debian.org/debian stretch-backports main
+    state: present
+
 - name: update all packages to the latest version
   apt:
     upgrade: dist
