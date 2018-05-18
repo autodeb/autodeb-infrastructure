@@ -16,10 +16,10 @@ Everything is operated from the Makefile using the following targets:
 If you want to be authorized on the machines, you should open a pull request to add yourself to ``roles/common/tasks/authorized_keys.yml``.
 Then, ask any of the already-authorized users to run ``make provision`` and you should now have shell access to all machines.
 
-This repository contains an encrypted file, ``vars_secret.yml``.
-If you are given the password to this file, write it in a file named ``vault-password`` in the root of the repository.
-This file is encrypted using ansible-vault and it contains the following variables:
- - ``oauth_client_id``
+This repository contains an encrypted file: ``vars_secret.yml``.
+It is encrypted using ansible-vault.
+If you are given the password to this file, write it in a file named ``vault-password`` at the root of the repository.
+``vars_secret.yml`` contains the following variables:
  - ``oauth_client_secret``
 
 Runtime dependencies of the Makefile targets in this repository include:

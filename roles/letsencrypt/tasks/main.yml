@@ -28,4 +28,4 @@
                --webroot-path=/var/www/html \
                --non-interactive \
                --agree-tos \
-               --email aviau@debian.org
+               --email {{ letsencrypt_email }}
