@@ -1,4 +1,4 @@
 ---
 
-- import_playbook: playbook_purge_master.yml
+- import_playbook: playbook_purge_masters.yml
 - import_playbook: playbook_purge_workers.yml
