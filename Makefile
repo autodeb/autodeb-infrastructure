@@ -28,6 +28,10 @@ purge-workers: .ansible
 purge-master: .ansible
 	$(ANSIBLE_PLAYBOOK_BIN) -i inventory_production.yml playbook_purge_master.yml
 
+.PHONY: vault-edit
+vault-edit: .ansible
+	.ansible-env/bin/ansible-vault edit vars_secret.yml --vault-id vault-password
+
 .PHONY: .ansible
 .ansible: .ansible-env
 

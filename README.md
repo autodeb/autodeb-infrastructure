@@ -19,8 +19,10 @@ Then, ask any of the already-authorized users to run ``make provision`` and you 
 This repository contains an encrypted file: ``vars_secret.yml``.
 It is encrypted using ansible-vault.
 If you are given the password to this file, write it in a file named ``vault-password`` at the root of the repository.
+You may edit ``vars_secret.yml`` with ``make vault-edit``.
 ``vars_secret.yml`` contains the following variables:
  - ``oauth_client_secret``
+ - ``autodeb_api_access_token``
 
 Runtime dependencies of the Makefile targets in this repository include:
  - make
