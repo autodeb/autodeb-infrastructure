@@ -33,3 +33,6 @@
                /srv/chroot/unstable-amd64-sbuild \
                http://deb.debian.org/debian
   when: unstable_amd64_sbuild.stat.exists == False
+
+- name: upgrade the schroot
+  command: sbuild-update --upgrade unstable-amd64-sbuild
