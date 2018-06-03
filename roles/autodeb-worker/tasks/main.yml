@@ -1,5 +1,15 @@
 ---
 
+- name: install some autodeb-worker dependencies from stretch-backports
+  apt:
+      name: "{{ item }}"
+      state: latest
+      default_release: stretch-backports
+  with_items:
+    - autopkgtest
+    - sbuild
+    - autodep8
+
 - name: install the autodeb-worker deb
   apt:
     deb: https://autodeb-team.pages.debian.net/autodeb-packaging/autodeb-worker_latest.deb
@@ -24,12 +34,11 @@
     path: /srv/chroot/unstable-amd64-sbuild
   register: unstable_amd64_sbuild
 
-# sbuild >= 0.74 would support
-#    --command-prefix=eatmydata
 - name: setup unstable schroot
   command: sbuild-createchroot \
                --include=eatmydata,ccache,gnupg unstable \
                --alias=UNRELEASED \
+               --command-prefix=eatmydata \
                /srv/chroot/unstable-amd64-sbuild \
                http://deb.debian.org/debian
   when: unstable_amd64_sbuild.stat.exists == False
