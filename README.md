@@ -12,6 +12,7 @@ Everything is operated from the Makefile using the following targets:
  - ``purge``: purge autodeb-worker and autodeb-server from all hosts
  - ``purge-workers``: purge only workers
  - ``purge-master``: purge only the master
+ - ``vault-edit``: edit ``vars_secret.yml`` (requires that you have created the ``vault-password`` file)
 
 If you want to be authorized on the machines, you should open a pull request to add yourself to ``roles/common/tasks/authorized_keys.yml``.
 Then, ask any of the already-authorized users to run ``make provision`` and you should now have shell access to all machines.
