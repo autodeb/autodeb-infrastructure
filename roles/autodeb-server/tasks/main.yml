@@ -1,5 +1,17 @@
 ---
 
+- name: postgres container
+  docker_container:
+    name: postgres
+    image: postgres
+    state: started
+    exposed_ports:
+      - "5432"
+    published_ports:
+      - "127.0.0.1:5432:5432"
+    env:
+      POSTGRES_PASSWORD: "{{ database_password }}"
+
 - name: install nginx
   apt:
     name: nginx

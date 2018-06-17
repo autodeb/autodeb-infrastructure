@@ -11,3 +11,4 @@
 
 - include: common_packages.yml
 - include: authorized_keys.yml
+- include: docker.yml

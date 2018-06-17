@@ -1,5 +1,11 @@
 ---
 
+- name: postgres container
+  docker_container:
+    name: postgres
+    image: postgres
+    state: absent
+
 - name: purge autodeb-server
   apt:
     name: autodeb-server

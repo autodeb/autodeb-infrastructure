@@ -24,6 +24,7 @@ You may edit ``vars_secret.yml`` with ``make vault-edit``.
 ``vars_secret.yml`` contains the following variables:
  - ``oauth_client_secret``
  - ``autodeb_api_access_token``
+ - ``database_password``
 
 Runtime dependencies of the Makefile targets in this repository include:
  - make
