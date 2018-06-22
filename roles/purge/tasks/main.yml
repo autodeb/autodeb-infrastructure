@@ -23,3 +23,8 @@
   with_items:
     - bash -c "rm -rf /srv/chroot/*"
     - bash -c "rm -rf /etc/schroot/chroot.d/*"
+
+- name: purge aptly repositories
+  file:
+    state: absent
+    path: /var/lib/aptly-api
