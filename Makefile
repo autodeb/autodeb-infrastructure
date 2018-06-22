@@ -8,9 +8,9 @@ ANSIBLE_PLAYBOOK_BIN:=.ansible-env/bin/ansible-playbook --vault-id vault-passwor
 provision: .ansible
 	$(ANSIBLE_PLAYBOOK_BIN) -i inventory_production.yml playbook_provision.yml
 
-.PHONY: provision-master
-provision-master: .ansible
-	$(ANSIBLE_PLAYBOOK_BIN) -i inventory_production.yml playbook_provision_master.yml
+.PHONY: provision-masters
+provision-masters: .ansible
+	$(ANSIBLE_PLAYBOOK_BIN) -i inventory_production.yml playbook_provision_masters.yml
 
 .PHONY: provision-workers
 provision-workers: .ansible
