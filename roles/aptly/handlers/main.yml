@@ -1,0 +1,9 @@
+---
+
+- name: reload systemd
+  command: systemctl daemon-reload
+
+- name: restart aptly-api
+  service:
+    name: aptly-api
+    state: restarted
