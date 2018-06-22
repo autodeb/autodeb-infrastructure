@@ -38,6 +38,7 @@
 - name: install aptly
   apt:
     name: aptly
+    default_release: stretch-backports
     state: latest
 
 - name: enable and start the aptly-api service
