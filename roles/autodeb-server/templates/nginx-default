@@ -20,6 +20,11 @@ server {
     # package uploads can be large
     client_max_body_size 1000M;
 
+    location /repos {
+        alias /var/lib/aptly-api/public;
+        autoindex on;
+    }
+
     # forward requests to autodeb-serv
     location / {
         proxy_pass http://localhost:8071;
