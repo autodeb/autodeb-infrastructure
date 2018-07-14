@@ -24,9 +24,9 @@ purge: .ansible
 purge-workers: .ansible
 	$(ANSIBLE_PLAYBOOK_BIN) -i inventory_production.yml playbook_purge_workers.yml
 
-.PHONY: purge-master
-purge-master: .ansible
-	$(ANSIBLE_PLAYBOOK_BIN) -i inventory_production.yml playbook_purge_master.yml
+.PHONY: purge-masters
+purge-masters: .ansible
+	$(ANSIBLE_PLAYBOOK_BIN) -i inventory_production.yml playbook_purge_masters.yml
 
 .PHONY: vault-edit
 vault-edit: .ansible
