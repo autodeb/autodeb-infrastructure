@@ -1,45 +1,17 @@
 ---
 
-- name: install the aptly-api service file
-  template:
-    src: aptly.service
-    dest: /lib/systemd/system/aptly-api.service
-  notify:
-    - reload systemd
-    - restart aptly-api
-
-- name: create the aptly-api group
-  group:
-    name: aptly-api
-    state: present
-
-- name: create the aptly-api user
-  user:
-    name: aptly-api
-    state: present
-    create_home: no
-    home: /var/lib/aptly-api
-    system: yes
-
-- name: create /var/lib/aptly-api
-  file:
-    path: /var/lib/aptly-api
-    state: directory
-    owner: aptly-api
-    group: aptly-api
-    mode: 0755
-
-- name: create /etc/aptly-api.conf
-  template:
-    src: aptly-api.conf
-    dest: /etc/aptly-api.conf
-    mode: 0644
-
-- name: install aptly
+- name: install aptly-api
   apt:
-    name: aptly
+    name: aptly-api
     default_release: stretch-backports
     state: latest
+
+- name: install /etc/default/aptly-api
+  template:
+    src: aptly-api.default
+    dest: /etc/default/aptly-api
+  notify:
+    - restart aptly-api
 
 - name: enable and start the aptly-api service
   service:

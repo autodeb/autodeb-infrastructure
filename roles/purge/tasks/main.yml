@@ -28,3 +28,9 @@
   file:
     state: absent
     path: /var/lib/aptly-api
+
+- name: purge aptly-api
+  apt:
+    name: aptly-api
+    state: absent
+    purge: yes
