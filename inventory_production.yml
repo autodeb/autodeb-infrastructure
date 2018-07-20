@@ -1,7 +1,7 @@
 masters:
     hosts:
         master1:
-            ansible_host: 54.157.41.104
+            ansible_host: 54.89.217.115
             ansible_user: admin
             ansible_become: true
 
