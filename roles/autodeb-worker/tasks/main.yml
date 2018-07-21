@@ -29,6 +29,8 @@
   notify:
     - restart autodeb-worker
 
+# Unstable schroot
+
 - name: check if /srv/chroot/unstable-amd64-sbuild is present
   stat:
     path: /srv/chroot/unstable-amd64-sbuild
@@ -36,12 +38,34 @@
 
 - name: setup unstable schroot
   command: sbuild-createchroot \
-               --include=eatmydata,ccache,gnupg unstable \
+               --include=eatmydata,ccache,gnupg \
                --alias=UNRELEASED \
                --command-prefix=eatmydata \
+               unstable \
                /srv/chroot/unstable-amd64-sbuild \
                http://deb.debian.org/debian
   when: unstable_amd64_sbuild.stat.exists == False
 
 - name: upgrade the schroot
   command: sbuild-update --upgrade unstable-amd64-sbuild
+
+# stretch-backports schroot
+
+- name: check if /srv/chroot/stretch-backports-amd64-sbuild is present
+  stat:
+    path: /srv/chroot/stretch-backports-amd64-sbuild
+  register: stretch_backports_amd64_sbuild
+
+- name: setup stretch-backports schroot
+  command: sbuild-createchroot \
+               --include=eatmydata,ccache,gnupg \
+               --command-prefix=eatmydata \
+               --extra-repository="deb https://deb.debian.org/debian stretch-backports main" \
+               --chroot-prefix=stretch-backports \
+               stretch \
+               /srv/chroot/stretch-backports-amd64-sbuild \
+               http://deb.debian.org/debian
+  when: stretch_backports_amd64_sbuild.stat.exists == False
+
+- name: upgrade the schroot
+  command: sbuild-update --upgrade stretch-backports-amd64-sbuild
