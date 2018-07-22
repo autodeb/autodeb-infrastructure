@@ -9,6 +9,7 @@
     - autopkgtest
     - sbuild
     - autodep8
+    - schroot
 
 - name: install the autodeb-worker deb
   apt:

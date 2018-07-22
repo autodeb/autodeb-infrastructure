@@ -18,11 +18,22 @@
     state: absent
     purge: yes
 
+- name: end all schroot sessions
+  command: schroot --all --end-session --force
+  ignore_errors: yes
+
+- name: purge the schroot package
+  apt:
+    name: schroot
+    state: absent
+    purge: yes
+
 - name: purge chroots
   command: "{{ item }}"
   with_items:
     - bash -c "rm -rf /srv/chroot/*"
     - bash -c "rm -rf /etc/schroot/chroot.d/*"
+    - bash -c "rm -rf /var/lib/schroot/*"
 
 - name: purge aptly repositories
   file:
