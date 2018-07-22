@@ -62,6 +62,7 @@
                --command-prefix=eatmydata \
                --extra-repository="deb https://deb.debian.org/debian stretch-backports main" \
                --chroot-prefix=stretch-backports \
+               --alias=stable-backports \
                stretch \
                /srv/chroot/stretch-backports-amd64-sbuild \
                http://deb.debian.org/debian
