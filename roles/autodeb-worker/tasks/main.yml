@@ -61,7 +61,7 @@
   command: sbuild-createchroot \
                --include=eatmydata,ccache,gnupg,apt-transport-https \
                --command-prefix=eatmydata \
-               --extra-repository="deb https://deb.debian.org/debian stretch-backports main" \
+               --extra-repository="deb http://ftp.debian.org/debian stretch-backports main" \
                --chroot-prefix=stretch-backports \
                --alias=stable-backports \
                stretch \
